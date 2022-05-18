@@ -89,4 +89,37 @@ public class MarkdownParseTest {
         links.add("a link");
         assertEquals(links, MarkdownParse.getLinks(content));
     }
+
+    @Test
+    public void getLinksFromFile101() throws IOException{
+        Path fileName = Path.of("/Users/ednaho/Documents/GitHub/ednafiles/test-file101.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = new ArrayList<>();
+        links.add("`google.com");
+        links.add("google.com");
+        links.add("ucsd.edu");
+        assertEquals(links, MarkdownParse.getLinks(content));
+    }
+
+    @Test
+    public void getLinksFromFile102() throws IOException{
+        Path fileName = Path.of("/Users/ednaho/Documents/GitHub/ednafiles/test-file102.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = new ArrayList<>();
+        links.add("a.com");
+        links.add("a.com(())");
+        links.add("example.com");
+        assertEquals(links, MarkdownParse.getLinks(content));
+    }
+
+    @Test
+    public void getLinksFromFile103() throws IOException{
+        Path fileName = Path.of("/Users/ednaho/Documents/GitHub/ednafiles/test-file103.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = new ArrayList<>();
+        links.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+
+    }
+    
+    
 }
